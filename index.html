@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <script type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
+
+    <script type="text/javascript" src="js/jquery-barcode.js"></script>
+
+    <title>Hello World</title>
+</head>
+<body>
+    <div data-role="page" id="landing">
+        <div style="width: 100%; text-align: center;">
+            <img style="margin-top: 100px; width: 95%; max-width: 400px; margin-left: auto; margin-right: auto;" src="img/logomof.png" />
+            <div style="clear: both;"></div>
+            <a style="margin-left: auto; margin-right: auto;" href="#offerlist" data-transition="slide" class="ui-btn ui-corner-all ui-btn-inline ui-icon-arrow-r ui-btn-icon-right">Offers</a>
+            <a style="margin-left: auto; margin-right: auto;" href="#pageBarcode" data-transition="slide" class="ui-btn ui-corner-all ui-btn-inline ui-icon-arrow-r ui-btn-icon-right">Barcode</a>
+            <a style="margin-left: auto; margin-right: auto;" href="#pageUpload" data-transition="slide" class="ui-btn ui-corner-all ui-btn-inline ui-icon-arrow-r ui-btn-icon-right">Upload</a>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="offerlist" data-url="offerlist">
+        <div data-role="header" class="mob-header" id="offerlist-header">
+            <h1 class="mob-header-date ui-title" style="display: inline-block" id="header_text">Foo</h1>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                <a id="aHome" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" href="#landing" data-transition="slide" data-direction="reverse">No text</a>
+                <a id="aSearch" class="ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" href="#search" data-transition="slide">No text</a>
+                <a id="ashowcal" href="#" class="ui-btn ui-icon-day ui-btn-icon-notext ui-corner-all">No text</a>
+            </div>
+        </div>
+        <div role="main" class="ui-content">
+            <div id="mob-calender-d1" class="mob-calender" style="padding-top: 10px;">
+            </div>
+            <!-- <div class="mob-calender-handle">&nbsp;</div>-->
+            <div id="offer-list-container">
+                <form class="ui-filterable">
+                    <input id="filterBasic-input" data-type="search">
+                </form>
+                <!--  <div style="clear: both;"></div>-->
+                <ul id="lstOffer" data-role="listview" data-filter="true" data-input="#filterBasic-input" data-inset="true">
+                    <li id="offer-tempate-item" style="display: none">
+                        <table class="offer-item">
+                            <tr>
+                                <td class="offer-img">
+                                    <div class="offer-img-container" style="background-image: url('img/upload/vox.jpg')">
+                                        &nbsp;
+                                    </div>
+                                </td>
+                                <td class="offer-data">
+                                    <div class="offer-data-organization">VOX Cinema</div>
+                                    <div class="offer-data-title">Fast and Furious</div>
+                                    <div class="offer-data-address">Dubai Mall, Dubai</div>
+                                </td>
+                                <td class="offer-sale">
+                                    <div class="offer-sales-img-container">
+                                        <div class="offer-sales-text">70%</div>
+                                    </div>
+                                    <div class="offer-sales-img-container-select">
+                                        <a class="offer-sales-map" href="#map-page" data-transition="slide"></a>
+                                        <a class="offer-sales-detail" href="#detail" data-transition="slide"></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="detail">
+        <div data-role="header" class="mob-header">
+            <h1>Offer Details</h1>
+            <a class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+        </div>
+        <div id="details-main" data-role="main" class="ui-content details-main" style="background-image: url('img/upload/batman.jpg');">
+            <div style="height: 100%;">
+                <div id="detailContainer" class="details-text">
+                    <p>
+                        Welcome   to   VOX   Cinemas,   the   Middle East’s 
+                    most  innovative  and  customer-focused  cinema
+                    experience .  
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="map-page" data-url="map-page">
+        <div data-role="header" class="mob-header">
+            <h1>Store Location</h1>
+            <a class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+        </div>
+        <div role="main" class="ui-content" id="map-canvas">
+            <!-- map loads here... -->
+        </div>
+
+    </div>
+
+
+    <div data-role="page" id="search" data-url="search">
+        <div data-role="header" class="mob-header">
+            <h1>Search</h1>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                <a class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+                <a id="aClearAll" href="#" class="ui-btn ui-icon-minus ui-btn-icon-notext ui-corner-all">No text</a>
+                <a id="aSearchOffer" class="ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+            </div>
+
+        </div>
+        <div role="main" class="ui-content" id="search-main">
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Date From:</label>
+                <input type="date" name="txtDateFrom" id="txtDateFrom" placeholder="Date From..." value="">
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Date To:</label>
+                <input type="date" name="txtDateTo" id="txtDateTo" placeholder="Date To..." value="">
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Category:</label>
+                <ul id="lstCategory" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Find a category..." data-filter-theme="a"></ul>
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Product:</label>
+                <ul id="lstProduct" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Find a Product..." data-filter-theme="a"></ul>
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Retailer:</label>
+                <ul id="lstRetailer" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Find a Retailer..." data-filter-theme="a"></ul>
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">Country:</label>
+                <ul id="lstCountry" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Find a Country..." data-filter-theme="a"></ul>
+            </div>
+            <div class="ui-field-contain">
+                <label for="textinput-fc">City:</label>
+                <ul id="lstCity" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Find a City..." data-filter-theme="a"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="pageBarcode" data-url="map-page">
+        <script type="text/javascript">
+            $('#pageBarcode').bind('pageinit', function (event) {
+                $("#Generatebarcode").click(function (e) {
+                    var value = $("#barcodeValue").val();
+                    //var btype = $("#btype").val(code39);
+                    var btype = "code39";//(std25,int25,code11,code93,codabar,msi,)
+                    //debugger; 
+                    var settings = {
+                        // output: renderer,
+                        bgColor: $("#bgColor").val(),
+                        color: $("#color").val(),
+                        barWidth: $("#barWidth").val(),
+                        barHeight: $("#barHeight").val(),
+                        moduleSize: $("#moduleSize").val(),
+                        posX: $("#posX").val(),
+                        posY: $("#posY").val(),
+                        addQuietZone: $("#quietZoneSize").val()
+                    };
+                    // debugger;
+                    $("#barcodeTarget").show().barcode(value, btype, settings);
+                });
+            });
+        </script>
+        <div data-role="header" class="mob-header">
+            <h1>Store Location</h1>
+            <a class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+        </div>
+        <div role="main" class="ui-content" id="Div2">
+            <table>
+                <tr>
+                    <td>
+                        <label for="textinput-fc">Product:</label>
+                        <input type="text" id="barcodeValue" value="" />
+                        <input type="button" onclick="generateBarcode();" id="Generatebarcode" value="Generate the barcode" />
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; background: #FFFFFF;">
+                        <div id="barcodeTarget" class="barcodeTarget"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div data-role="page" id="pageUpload" data-url="map-page">
+        <!--<link rel="stylesheet" type="text/css" href="Kendo/v2014.1.416/styles/kendo.bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="Kendo/v2014.1.416/styles/kendo.common.css" />
+        <link rel="stylesheet" type="text/css" href="Kendo/v2014.1.416/styles/kendo.default.css" />
+        <script type="text/javascript" src="Kendo/v2014.1.416/js/kendo.all.js"></script>
+        <script type="text/javascript" src="Kendo/v2014.1.416/js/kendo.web.js"></script>-->
+        <script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
+
+        <script type="text/javascript">
+            $('#pageUpload').bind('pageinit', function (event) {
+                //$.support.cors = true;
+                //$.support.withCredentials = false;
+                $.ajaxSetup({
+                    type: "POST",
+                    data: {},
+                    dataType: 'json',
+                    xhrFields: {
+                        withCredentials: false
+                    },
+                    crossDomain: true
+                });
+
+                $("#btnUpload").click(function (e) {
+
+                    var d = new Date();
+                    var signature = d.getTime();
+
+                    try {
+                        $.ajax({
+                            url: "http://mof1.adigielite.net/Upload/UploadHandler.ashx?dest=offerImageDest&c=Y&sig=" + signature,
+                            type: 'POST',
+                            files: $('#fileUpload'),
+                            iframe: true,
+                            success: function (data, textStatus, jqXHR) {
+                                //Do whatever you want with the response
+                                //debugger;
+                                $.ajax({
+                                    url: "http://mof1.adigielite.net/Upload/UploadHandler.ashx?dest=offerImageDest&c=Y&sig=" + signature,
+                                    type: 'GET',
+                                    //files: $('#fileUpload'),
+                                    //iframe: true,
+                                    success: function (data, textStatus, jqXHR) {
+                                        //Do whatever you want with the response
+                                        $("#divUploadLink").html(data[0].relativepath);
+                                        //debugger;
+                                    },
+                                    error: function (err) {
+                                        //debugger;
+                                        console.error(err);
+                                        console.log("Error while uploading the document. :/");
+                                    }
+                                });
+                               
+                            },
+                            error: function (err) {
+                                //debugger;
+                                console.error(err);
+                                console.log("Error while uploading the document. :/");
+                            }
+                        });
+                    } catch (err) {
+                        location.reload();
+                    }
+                });
+            });
+        </script>
+        <div data-role="header" class="mob-header">
+            <h1>Store Location</h1>
+            <a class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all" href="#offerlist" data-transition="slide" data-direction="reverse">No text</a>
+        </div>
+        <div role="main" class="ui-content" id="Div3">
+            <table>
+                <tr>
+                    <td>
+                        <label for="textinput-fc">Upload:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="post" enctype="multipart/form-data"> 
+                            <input class='fileUpload' type="file" id="fileUpload" name="file" />
+                            <button id="btnUpload" type="button">Upload</button>
+                        </form>
+                        <div id="divUploadLink" style="padding: 10px; color:#FFFFFF;" />                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

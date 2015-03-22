@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>       
+        
+   * {     
+ color: #7F7F7F;
+font-family: Arial, sans-serif;
+font-size: 12px;
+font-weight: normal;
+}
+#config {
+overflow: auto;
+margin-bottom: 10px;
+}
+.config {
+float: left;
+width: 100px;
+height: 150px;
+border: 1px solid #000;
+margin-left: 10px;
+}
+.config .title {
+font-weight: bold;
+text-align: center;
+}
+.config .barcode2D,  #miscCanvas {
+display: none;
+}
+/*#submit {
+clear: both;
+}*/
+#barcodeTarget,  #canvasTarget {
+margin-top: 10px;
+}
+    </style>
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="../www/js/jquery-barcode.js"></script>
+    <script type="text/javascript">
+
+       
+
+        function generateBarcode() {
+            var value = $("#barcodeValue").val();
+            //var btype = $("#btype").val(code39);
+            var btype = "code39";//(std25,int25,code11,code93,codabar,msi,)
+            //debugger; 
+            var settings = {
+               // output: renderer,
+                bgColor: $("#bgColor").val(),
+                color: $("#color").val(),
+                barWidth: $("#barWidth").val(),
+                barHeight: $("#barHeight").val(),
+                moduleSize: $("#moduleSize").val(),
+                posX: $("#posX").val(),
+                posY: $("#posY").val(),
+                addQuietZone: $("#quietZoneSize").val()
+            };
+           // debugger;
+            $("#barcodeTarget").show().barcode(value, btype, settings);
+           
+        }
+        //function showConfig1D() {
+        //    $('.config .barcode1D').show();
+        //    $('.config .barcode2D').hide();
+        //}
+
+        //function showConfig2D() {
+        //    $('.config .barcode1D').hide();
+        //    $('.config .barcode2D').show();
+        //}
+              
+</script>
+    <title>
+       
+    </title>
+</head>
+<body>
+    <table>
+        <tr><td>
+    <label for="textinput-fc">Product:</label>
+             <input type="text" id="barcodeValue" value=""/>
+            <input type="button" onclick="generateBarcode();" id="Generatebarcode" value="Generate the barcode"/>
+           </td></tr>         
+       <tr><td>           
+          <div id="barcodeTarget" class="barcodeTarget"></div>
+
+            </td></tr>
+        </table>
+   
+
+
+</body>
+</html>

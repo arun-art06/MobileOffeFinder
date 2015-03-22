@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>    
+    <title></title>
+    
+  <link href="Kendo/v2014.1.416/styles/kendo.common.css" rel="stylesheet" />
+    <link href="Kendo/v2014.1.416/styles/kendo.default.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="Kendo/v2014.1.416/js/kendo.all.js"></script>   
+    <script type="text/javascript" src="Kendo/v2014.1.416/js/jquery.js"></script>
+       <script type="text/javascript">
+          // $(document).ready(function () {
+           function initUpload() {
+               debugger;
+               $("#fileUploadImage").kendoUpload({
+                   async: {
+                       //saveUrl: "FileHandler.ashx?upload=true&t=" + selectedTerritoryId + "&c=" + selectedCustomerId + "&s=" + selectedServiceId + "&ty=" + type + "&st=" + subType + "",
+                       saveUrl: "mof1.adigielite.net",
+                       autoUpload: true
+                   },
+                   multiple: false,
+                   success: function (msg) {
+                       var response = msg.response;
+                       debugger;
+                       if (response != undefined && response.length > 0) {
+                           $("#files").val(response[0].relativepath);
+                       }
+                   },
+                   error: function (e) {
+                       var response = JSON.parse(e.responseText);
+                   }
+               });
+          };
+              // });
+       </script>  
+</head>
+<body>
+    <!-- <div id="example"> -->          
+            <form method="post"> <!--action="/kendo-ui/upload/submit"-->
+                <!--<div class="demo-section k-header">-->
+                    <input name="files" id="fileUploadImage" type="file" />
+                    <p>
+                        <input type="button" value="Upload"  onclick="initUpload();" />
+                    </p>
+                <!--</div>-->
+            </form>
+            <!--<script>
+                //$(document).ready(function () {
+                    $("#files").kendoUpload();
+                //});
+            </script>-->
+       <!-- </div>-->
+   
+</body>
+</html>
