@@ -157,7 +157,14 @@
     <div data-role="page" id="pageBarcode" data-url="map-page">
         <script type="text/javascript">
             $('#pageBarcode').bind('pageinit', function (event) {
+
+              
+                //alert(pwith + " : " + pheight);
+
                 $("#Generatebarcode").click(function (e) {
+                    var pwith = $("#pageBarcode").width();
+                    var pheight = $("#pageBarcode").height();
+
                     var value = $("#barcodeValue").val();
                     //var btype = $("#btype").val(code39);
                     var btype = "code39";//(std25,int25,code11,code93,codabar,msi,)
@@ -165,9 +172,7 @@
                     var settings = {
                         // output: renderer,
                         bgColor: $("#bgColor").val(),
-                        color: $("#color").val(),
-                        barWidth: $("#barWidth").val(),
-                        barHeight: $("#barHeight").val(),
+                        color: $("#color").val(), 
                         moduleSize: $("#moduleSize").val(),
                         posX: $("#posX").val(),
                         posY: $("#posY").val(),
@@ -187,8 +192,8 @@
                 <tr>
                     <td>
                         <label for="textinput-fc">Product:</label>
-                        <input type="text" id="barcodeValue" value="" />
-                        <input type="button" onclick="generateBarcode();" id="Generatebarcode" value="Generate the barcode" />
+                        <input type="text" id="barcodeValue" value="123-123123123" />
+                        <input type="button"  id="Generatebarcode" value="Generate the barcode" />
                     </td>
                 </tr>
                 <tr>
